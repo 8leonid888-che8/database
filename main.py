@@ -11,10 +11,11 @@ class Example(QWidget):
 
     def initUI(self):
         db = QSqlDatabase.addDatabase('QSQLITE')
+        db.setDatabaseName("coffee.sqlite")
         db.open()
         view = QTableView(self)
         model = QSqlTableModel(self, db)
-        model.setTable('coffee.sqlite')
+        model.setTable('coffee')
         model.select()
         view.setModel(model)
         view.move(10, 10)
